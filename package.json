@@ -1,0 +1,13 @@
+{
+  "name": "AutoLyrics",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "request": "^2.88.0"
+  },
+  "scripts": {
+    "start": "node index.js"
+  }
+}
