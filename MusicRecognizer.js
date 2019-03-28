@@ -43,7 +43,9 @@ class MusicRecognizer {
       return e;
     });
 
-    return this.extractMetaData(JSON.parse(body));
+    this.extractMetaData(JSON.parse(body));
+
+    return this.recognized_musics;
   }
 
   extractMetaData(data) {
@@ -60,12 +62,21 @@ class MusicRecognizer {
 
     const musics = data.metadata.music;
 
-    return musics.map(m => {
+    this.recognized_musics = musics.map(m => {
       return {
         title: m.title,
         artist: m.artists[0] ? m.artists[0].name : ''
       }
     });
+  }
+
+  specifyMusic(i) {
+    if (this.recognized_musics && this.recognized_musics[i]){
+      return this.recognized_musics[i];
+    } else {
+      console.error('given index is out of range or you have not recognized any music yet: recognizedMusics');
+      return false;
+    }
   }
 }
 

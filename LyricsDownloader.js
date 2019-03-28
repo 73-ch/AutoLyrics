@@ -7,34 +7,23 @@ const ARTIST_LINK_SELECTOR = '.bdy .sml a';
 
 class LyricsDownloader {
   constructor() {
-    this.nightmare = Nightmare({show: true});
-    this.generator = null;
+    this.nightmare = Nightmare({show: false});
   }
 
-  async fetchLyrics(title, artist) {
+  async fetchLyricInfos(title, artist) {
     this.current_title = title;
     this.current_artist = artist;
 
-    await this.main();
+    const titleTags = await this.getLyricsInfoList(TITLE_LINK_SELECTOR);
+    const artistTags = await this.getLyricsInfoList(ARTIST_LINK_SELECTOR);
 
-    this.generator = this.lyricsGenerator();
-
-    // const data = await this.runVo().catch(e => {
-    //   console.error('failed to get lyrics');
-    //   console.error(e.message);
-    //   return null;
-    // });
-
-  }
-
-  runVo() {
-    return new Promise((resolve, reject) => {
-      vo(this.main())(function(err, result) {
-        if (err) reject(err);
-
-        resolve(result);
-      });
-    })
+    this.song_infos = titleTags.map((title, i) => {
+      return {
+        title: title.textContent,
+        href: title.href,
+        artist: artistTags[i].textContent
+      };
+    });
   }
 
   // j-lyricsの特定の曲のリンクから歌詞のテキストのみを抜き出す関数
@@ -42,7 +31,7 @@ class LyricsDownloader {
     return this.nightmare
       .goto(link)
       .evaluate(selector => {
-        return document.querySelector(selector).textContent.replace('<br>', ' ');
+        return document.querySelector(selector).innerHTML;
       }, '#Lyric');
   }
 
@@ -59,35 +48,22 @@ class LyricsDownloader {
       }, tag);
   }
 
-  async main() {
-    const titleTags = await this.getLyricsInfoList(TITLE_LINK_SELECTOR);
-    const artistTags = await this.getLyricsInfoList(ARTIST_LINK_SELECTOR);
-    this.infos = titleTags.map((title, i) => {
-      return {
-        title: title.textContent,
-        href: title.href,
-        artist: artistTags[i].textContent
-      };
-    });
+  async specifyLyric(i) {
+    if (!this.song_infos || !this.song_infos[i]) {
+      console.error('given index is out of range or you have not recognized any music yet: recognizedMusics');
 
-    return true;
-  }
-
-  async * lyricsGenerator() {
-    for (let l of this.infos) {
-      console.log(l.href);
-      const lyric = await this.getLyricsFromPage(l.href);
-      let selected = yield Object.assign(l,{lyric: lyric});
-
-      if (selected) {
-        this.nightmare.end();
-        this.generator = null;
-        return true;
-      }
+      return false;
     }
+    const song = this.song_infos[i];
 
-    this.nightmare.end();
-    return false;
+
+    const lyric = await this.getLyricsFromPage(song.href);
+
+    return {
+      title: song.title,
+      artist: song.artist,
+      lyric: lyric
+    };
   }
 }
 
