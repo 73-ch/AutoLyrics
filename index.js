@@ -1,19 +1,18 @@
 const fs = require('fs');
 
+const AutoLyricsInterface = require('./AutoLyricsInterface');
 
-const MusicRecognizer = require('./MusicRecognizer');
-const LyricsDownloader = require('./LyricsDownloader');
+const interface = new AutoLyricsInterface();
 
-const recognizer = new MusicRecognizer();
-const bitmap = fs.readFileSync('./audio/GAME.m4a');
-const buffer = Buffer.from(bitmap);
 
 (async () => {
-  const playingData = await recognizer.identify(buffer);
+  await interface.startRecognize('./audio/GAME.m4a');
 
-  console.log(playingData);
+  await interface.selectRecognizedMusic(0);
 
-  const downloader = new LyricsDownloader();
+  const lyrics = await interface.nextDownloadedLyrics();
 
-  await downloader.fetchLyrics(playingData[0].title, playingData[0].artist);
+  console.log(lyrics);
+
+  interface.finishDownloadedLyrics();
 })();
