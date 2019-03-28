@@ -47,6 +47,17 @@ class MusicRecognizer {
   }
 
   extractMetaData(data) {
+    console.log(data);
+    if (data.status.code === 1001) {
+      console.log('No result');
+      return {};
+    }
+
+    if (!data.metadata || !data.metadata.music) {
+      console.error('data format is invalid');
+      return false;
+    }
+
     const musics = data.metadata.music;
 
     return musics.map(m => {
