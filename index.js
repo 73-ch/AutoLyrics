@@ -1,67 +1,19 @@
-var url = require('url');
-var fs = require('fs');
-var crypto = require('crypto');
-//npm install request
-var request = require('request');
-var api_info = require('./api_info.json'); //　注意: キャッシュされているのでファイル変更で更新されない
+const fs = require('fs');
 
-// Replace "###...###" below with your project's host, access_key and access_secret.
-var defaultOptions = {
-  host: api_info.host,
-  endpoint: '/v1/identify',
-  signature_version: '1',
-  data_type:'audio',
-  secure: true,
-  access_key: api_info.access_key,
-  access_secret: api_info.access_secret
-};
 
-function buildStringToSign(method, uri, accessKey, dataType, signatureVersion, timestamp) {
-  return [method, uri, accessKey, dataType, signatureVersion, timestamp].join('\n');
-}
+const MusicRecognizer = require('./MusicRecognizer');
+const LyricsDownloader = require('./LyricsDownloader');
 
-function sign(signString, accessSecret) {
-  return crypto.createHmac('sha1', accessSecret)
-    .update(new Buffer(signString, 'utf-8'))
-    .digest().toString('base64');
-}
+const recognizer = new MusicRecognizer();
+const bitmap = fs.readFileSync('./audio/GAME.m4a');
+const buffer = Buffer.from(bitmap);
 
-/**
- * Identifies a sample of bytes
- */
-function identify(data, options, cb) {
+(async () => {
+  const playingData = await recognizer.identify(buffer);
 
-  var current_data = new Date();
-  var timestamp = current_data.getTime()/1000;
+  console.log(playingData);
 
-  var stringToSign = buildStringToSign('POST',
-    options.endpoint,
-    options.access_key,
-    options.data_type,
-    options.signature_version,
-    timestamp);
+  const downloader = new LyricsDownloader();
 
-  var signature = sign(stringToSign, options.access_secret);
-
-  var formData = {
-    sample: data,
-    access_key:options.access_key,
-    data_type:options.data_type,
-    signature_version:options.signature_version,
-    signature:signature,
-    sample_bytes:data.length,
-    timestamp:timestamp,
-  };
-  request.post({
-    url: "http://"+options.host + options.endpoint,
-    method: 'POST',
-    formData: formData
-  }, cb);
-}
-
-var bitmap = fs.readFileSync('./audio/GAME.m4a');
-
-identify(new Buffer(bitmap), defaultOptions, function (err, httpResponse, body) {
-  if (err) console.log(err);
-  console.log(body);
-});
+  await downloader.fetchLyrics(playingData[0].title, playingData[0].artist);
+})();

@@ -5,7 +5,10 @@
   "license": "MIT",
   "private": true,
   "dependencies": {
-    "request": "^2.88.0"
+    "nightmare": "^3.0.1",
+    "request": "^2.88.0",
+    "request-promise": "^4.2.4",
+    "vo": "^4.0.2"
   },
   "scripts": {
     "start": "node index.js"
