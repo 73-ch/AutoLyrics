@@ -8,17 +8,22 @@ const ARTIST_LINK_SELECTOR = '.bdy .sml a';
 class LyricsDownloader {
   constructor() {
     this.nightmare = Nightmare({show: true});
+    this.generator = null;
   }
 
   async fetchLyrics(title, artist) {
     this.current_title = title;
     this.current_artist = artist;
 
-    const data = await this.runVo().catch(e => {
-      console.error('failed to get lyrics');
-      console.error(e.message);
-      return null;
-    });
+    await this.main();
+
+    this.generator = this.lyricsGenerator();
+
+    // const data = await this.runVo().catch(e => {
+    //   console.error('failed to get lyrics');
+    //   console.error(e.message);
+    //   return null;
+    // });
 
   }
 
@@ -37,7 +42,7 @@ class LyricsDownloader {
     return this.nightmare
       .goto(link)
       .evaluate(selector => {
-        return document.querySelector(selector).textContent.replace('<br>', '');
+        return document.querySelector(selector).textContent.replace('<br>', ' ');
       }, '#Lyric');
   }
 
@@ -47,15 +52,17 @@ class LyricsDownloader {
     return this.nightmare
       .goto(`http://search2.j-lyric.net/index.php?kt=${this.current_title}&ct=2&ka=${this.current_artist}&ca=2&kl=&cl=2`)
       .evaluate(selector => {
-        return Array.from(document.querySelectorAll(selector)).map(a => ({textContent: a.textContent, href: a.href}));
+        return Array.from(document.querySelectorAll(selector)).map(a => ({
+          textContent: a.textContent,
+          href: a.href
+        }));
       }, tag);
   }
 
-  * main() {
-    const titleTags = yield this.getLyricsInfoList(TITLE_LINK_SELECTOR);
-    const artistTags = yield this.getLyricsInfoList(ARTIST_LINK_SELECTOR);
-
-    const infos = yield titleTags.map((title, i) => {
+  async main() {
+    const titleTags = await this.getLyricsInfoList(TITLE_LINK_SELECTOR);
+    const artistTags = await this.getLyricsInfoList(ARTIST_LINK_SELECTOR);
+    this.infos = titleTags.map((title, i) => {
       return {
         title: title.textContent,
         href: title.href,
@@ -63,21 +70,24 @@ class LyricsDownloader {
       };
     });
 
-    // console.log(infos);
+    return true;
+  }
 
-    for (let l of infos) {
-      const lyric = yield this.getLyricsFromPage(l.href);
-      console.log(`
-      ${l.title}  :  ${l.artist}
-      
-      ${lyric}
-       -----------------------------------------------------------------------
-      `);
+  async * lyricsGenerator() {
+    for (let l of this.infos) {
+      console.log(l.href);
+      const lyric = await this.getLyricsFromPage(l.href);
+      let selected = yield Object.assign(l,{lyric: lyric});
 
+      if (selected) {
+        this.nightmare.end();
+        this.generator = null;
+        return true;
+      }
     }
 
-    yield this.nightmare.end();
-    return true;
+    this.nightmare.end();
+    return false;
   }
 }
 
