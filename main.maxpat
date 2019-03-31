@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ -1705.0, 718.0, 1287.0, 303.0 ],
+		"rect" : [ 176.0, 729.0, 1597.0, 421.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -38,6 +38,264 @@
 		"style" : "",
 		"subpatcher_template" : "",
 		"boxes" : [ 			{
+				"box" : 				{
+					"id" : "obj-73",
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 2,
+					"outlettype" : [ "bang", "int" ],
+					"patching_rect" : [ 799.0, 35.666666666666629, 32.0, 22.0 ],
+					"text" : "t b 0"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-71",
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 2,
+					"outlettype" : [ "bang", "int" ],
+					"patching_rect" : [ 697.833333333333485, 21.833333333333314, 32.0, 22.0 ],
+					"text" : "t b 1"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-70",
+					"maxclass" : "button",
+					"numinlets" : 1,
+					"numoutlets" : 1,
+					"outlettype" : [ "bang" ],
+					"parameter_enable" : 1,
+					"patching_rect" : [ 762.0, 5.0, 24.0, 24.0 ],
+					"presentation" : 1,
+					"presentation_rect" : [ 370.0, 14.166662335395756, 24.0, 24.0 ],
+					"saved_attribute_attributes" : 					{
+						"valueof" : 						{
+							"parameter_shortname" : "button[2]",
+							"parameter_enum" : [ "off", "on" ],
+							"parameter_type" : 2,
+							"parameter_longname" : "button[2]",
+							"parameter_mmax" : 1
+						}
+
+					}
+,
+					"varname" : "button[2]"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-68",
+					"maxclass" : "button",
+					"numinlets" : 1,
+					"numoutlets" : 1,
+					"outlettype" : [ "bang" ],
+					"parameter_enable" : 1,
+					"patching_rect" : [ 725.0, 5.0, 24.0, 24.0 ],
+					"presentation" : 1,
+					"presentation_rect" : [ 322.0, 14.166662335395756, 24.0, 24.0 ],
+					"saved_attribute_attributes" : 					{
+						"valueof" : 						{
+							"parameter_shortname" : "button[1]",
+							"parameter_enum" : [ "off", "on" ],
+							"parameter_type" : 2,
+							"parameter_longname" : "button[1]",
+							"parameter_mmax" : 1
+						}
+
+					}
+,
+					"varname" : "button[1]"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-66",
+					"maxclass" : "newobj",
+					"numinlets" : 5,
+					"numoutlets" : 4,
+					"outlettype" : [ "int", "", "", "int" ],
+					"patching_rect" : [ 725.0, 47.666666666666629, 61.0, 22.0 ],
+					"text" : "counter"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-47",
+					"maxclass" : "live.slider",
+					"numinlets" : 1,
+					"numoutlets" : 2,
+					"orientation" : 1,
+					"outlettype" : [ "", "float" ],
+					"parameter_enable" : 1,
+					"patching_rect" : [ 1240.0, 117.0, 50.0, 41.0 ],
+					"presentation" : 1,
+					"presentation_rect" : [ 1300.0, 10.666662335395756, 86.0, 41.0 ],
+					"saved_attribute_attributes" : 					{
+						"valueof" : 						{
+							"parameter_shortname" : "live.slider",
+							"parameter_type" : 0,
+							"parameter_unitstyle" : 1,
+							"parameter_mmin" : 0.1,
+							"parameter_longname" : "live.slider",
+							"parameter_mmax" : 50.0
+						}
+
+					}
+,
+					"varname" : "live.slider"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-37",
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 954.0, 378.0, 59.0, 22.0 ],
+					"text" : "append 1"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-25",
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 1256.0, 407.0, 138.0, 22.0 ],
+					"text" : "prepend /set_roughness"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-23",
+					"maxclass" : "toggle",
+					"numinlets" : 1,
+					"numoutlets" : 1,
+					"outlettype" : [ "int" ],
+					"parameter_enable" : 1,
+					"patching_rect" : [ 1128.0, 334.0, 24.0, 24.0 ],
+					"presentation" : 1,
+					"presentation_rect" : [ 1237.500030914942272, 10.666662335395756, 24.0, 24.0 ],
+					"saved_attribute_attributes" : 					{
+						"valueof" : 						{
+							"parameter_shortname" : "toggle",
+							"parameter_enum" : [ "off", "on" ],
+							"parameter_type" : 2,
+							"parameter_longname" : "toggle",
+							"parameter_mmax" : 1
+						}
+
+					}
+,
+					"varname" : "toggle"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-19",
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 1128.0, 407.0, 114.0, 22.0 ],
+					"text" : "prepend /set_scene"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-18",
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 953.833333333333371, 407.0, 163.0, 22.0 ],
+					"text" : "prepend /set_primitive_mode"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-15",
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 697.833333333333485, 407.0, 147.0, 22.0 ],
+					"text" : "prepend /set_index_mode"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-28",
+					"items" : [ "TRIANGLES", ",", "TRIANGLE_STRIP", ",", "TRIANGLE_FAN", ",", "LINES", ",", "LINE_STRIP", ",", "LINE_LOOP", ",", "POINTS" ],
+					"maxclass" : "umenu",
+					"numinlets" : 1,
+					"numoutlets" : 3,
+					"outlettype" : [ "int", "", "" ],
+					"parameter_enable" : 1,
+					"patching_rect" : [ 953.833333333333371, 334.0, 150.0, 22.0 ],
+					"presentation" : 1,
+					"presentation_rect" : [ 1063.333364248275757, 10.666662335395756, 150.0, 22.0 ],
+					"saved_attribute_attributes" : 					{
+						"valueof" : 						{
+							"parameter_initial" : [ 6 ],
+							"parameter_shortname" : "umenu[3]",
+							"parameter_enum" : [ "TRIANGLES", "TRIANGLE_STRIP", "TRIANGLE_FAN", "LINES", "LINE_STRIP", "LINE_LOOP", "POINTS" ],
+							"parameter_type" : 2,
+							"parameter_longname" : "umenu[3]",
+							"parameter_initial_enable" : 1,
+							"parameter_mmax" : 6
+						}
+
+					}
+,
+					"varname" : "umenu"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-2",
+					"items" : [ "KAKKURI_NO_INDEX", ",", "KAKKURI_INDEX_LINE", ",", "KAKKURI_INDEX_TRIANGLE", ",", "KAKKURI_INDEX_CUSTOM" ],
+					"maxclass" : "umenu",
+					"numinlets" : 1,
+					"numoutlets" : 3,
+					"outlettype" : [ "int", "", "" ],
+					"parameter_enable" : 1,
+					"patching_rect" : [ 697.833333333333485, 334.0, 223.0, 22.0 ],
+					"presentation" : 1,
+					"presentation_rect" : [ 807.333364248275757, 10.666662335395756, 223.0, 22.0 ],
+					"saved_attribute_attributes" : 					{
+						"valueof" : 						{
+							"parameter_shortname" : "umenu[1]",
+							"parameter_enum" : [ "KAKKURI_NO_INDEX", "KAKKURI_INDEX_LINE", "KAKKURI_INDEX_TRIANGLE", "KAKKURI_INDEX_CUSTOM" ],
+							"parameter_type" : 2,
+							"parameter_longname" : "umenu[1]",
+							"parameter_mmax" : 3
+						}
+
+					}
+,
+					"varname" : "umenu[1]"
+				}
+
+			}
+, 			{
 				"box" : 				{
 					"id" : "obj-17",
 					"maxclass" : "comment",
@@ -115,7 +373,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 980.833333333333485, 160.833333333333314, 141.0, 22.0 ],
-					"text" : "Perfume"
+					"text" : "\"Young Juvenile Youth\""
 				}
 
 			}
@@ -127,7 +385,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 801.5, 160.833333333333314, 154.0, 22.0 ],
-					"text" : "\"Let Me Know\""
+					"text" : "Girlfriend"
 				}
 
 			}
@@ -284,7 +542,7 @@
 					"patching_rect" : [ 561.833333333333485, 234.833333333333314, 850.0, 49.0 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 268.833333214124195, 57.166663726170839, 739.0, 49.0 ],
-					"text" : "\"時と共に吹く 風に乗っても\""
+					"text" : "\"So you hold hold hold\""
 				}
 
 			}
@@ -381,13 +639,25 @@
 					"fontsize" : 30.0,
 					"id" : "obj-112",
 					"maxclass" : "number",
+					"maximum" : 127,
+					"minimum" : 0,
 					"numinlets" : 1,
 					"numoutlets" : 2,
 					"outlettype" : [ "", "bang" ],
-					"parameter_enable" : 0,
+					"parameter_enable" : 1,
 					"patching_rect" : [ 561.833333333333485, 47.666666666666629, 89.0, 42.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 352.833333810170643, -4.833337664604244, 89.0, 42.0 ]
+					"presentation_rect" : [ 415.833333214124195, 5.166662335395756, 89.0, 42.0 ],
+					"saved_attribute_attributes" : 					{
+						"valueof" : 						{
+							"parameter_shortname" : "number",
+							"parameter_type" : 0,
+							"parameter_longname" : "number"
+						}
+
+					}
+,
+					"varname" : "number"
 				}
 
 			}
@@ -400,7 +670,7 @@
 					"outlettype" : [ "", "" ],
 					"patching_rect" : [ 561.833333333333485, 108.333333333333286, 56.0, 22.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 268.833333214124195, 5.166662335395756, 56.0, 22.0 ],
+					"presentation_rect" : [ 241.833333214124195, 5.166662335395756, 56.0, 22.0 ],
 					"text" : "zl lookup"
 				}
 
@@ -435,7 +705,7 @@
 				"box" : 				{
 					"fontsize" : 24.0,
 					"id" : "obj-90",
-					"items" : "Let Me Know - Perfume",
+					"items" : "Girlfriend - Young Juvenile Youth",
 					"maxclass" : "umenu",
 					"numinlets" : 1,
 					"numoutlets" : 3,
@@ -556,10 +826,22 @@
 					"numinlets" : 1,
 					"numoutlets" : 1,
 					"outlettype" : [ "bang" ],
-					"parameter_enable" : 0,
+					"parameter_enable" : 1,
 					"patching_rect" : [ 146.5, 21.833333333333314, 79.0, 79.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 142.49999988079071, -18.833337664604244, 79.0, 79.0 ]
+					"presentation_rect" : [ 142.49999988079071, -18.833337664604244, 79.0, 79.0 ],
+					"saved_attribute_attributes" : 					{
+						"valueof" : 						{
+							"parameter_shortname" : "button",
+							"parameter_enum" : [ "off", "on" ],
+							"parameter_type" : 2,
+							"parameter_longname" : "button",
+							"parameter_mmax" : 1
+						}
+
+					}
+,
+					"varname" : "button"
 				}
 
 			}
@@ -619,7 +901,7 @@
 				"box" : 				{
 					"fontsize" : 24.0,
 					"id" : "obj-36",
-					"items" : "Let Me Know - Perfume",
+					"items" : "Girlfriend - Young Juvenile Youth",
 					"maxclass" : "umenu",
 					"numinlets" : 1,
 					"numoutlets" : 3,
@@ -784,8 +1066,6 @@
 					"saved_object_attributes" : 					{
 						"autostart" : 1,
 						"defer" : 0,
-						"node_bin_path" : "",
-						"npm_bin_path" : "",
 						"watch" : 1
 					}
 ,
@@ -865,6 +1145,13 @@
 			}
 , 			{
 				"patchline" : 				{
+					"destination" : [ "obj-64", 0 ],
+					"source" : [ "obj-15", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
 					"destination" : [ "obj-5", 1 ],
 					"order" : 1,
 					"source" : [ "obj-16", 0 ]
@@ -876,6 +1163,27 @@
 					"destination" : [ "obj-6", 1 ],
 					"order" : 0,
 					"source" : [ "obj-16", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-64", 0 ],
+					"source" : [ "obj-18", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-64", 0 ],
+					"source" : [ "obj-19", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-15", 0 ],
+					"source" : [ "obj-2", 0 ]
 				}
 
 			}
@@ -895,6 +1203,13 @@
 			}
 , 			{
 				"patchline" : 				{
+					"destination" : [ "obj-19", 0 ],
+					"source" : [ "obj-23", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
 					"destination" : [ "obj-1", 0 ],
 					"source" : [ "obj-24", 0 ]
 				}
@@ -902,8 +1217,22 @@
 			}
 , 			{
 				"patchline" : 				{
+					"destination" : [ "obj-64", 0 ],
+					"source" : [ "obj-25", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
 					"destination" : [ "obj-60", 0 ],
 					"source" : [ "obj-27", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-37", 0 ],
+					"source" : [ "obj-28", 0 ]
 				}
 
 			}
@@ -932,6 +1261,13 @@
 				"patchline" : 				{
 					"destination" : [ "obj-13", 0 ],
 					"source" : [ "obj-36", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-18", 0 ],
+					"source" : [ "obj-37", 0 ]
 				}
 
 			}
@@ -997,6 +1333,13 @@
 				"patchline" : 				{
 					"destination" : [ "obj-110", 1 ],
 					"source" : [ "obj-45", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-25", 0 ],
+					"source" : [ "obj-47", 0 ]
 				}
 
 			}
@@ -1121,6 +1464,55 @@
 			}
 , 			{
 				"patchline" : 				{
+					"destination" : [ "obj-112", 0 ],
+					"source" : [ "obj-66", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-71", 0 ],
+					"source" : [ "obj-68", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-73", 0 ],
+					"source" : [ "obj-70", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-66", 1 ],
+					"source" : [ "obj-71", 1 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-66", 0 ],
+					"source" : [ "obj-71", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-66", 1 ],
+					"source" : [ "obj-73", 1 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-66", 0 ],
+					"source" : [ "obj-73", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
 					"destination" : [ "obj-6", 0 ],
 					"source" : [ "obj-76", 0 ]
 				}
@@ -1207,8 +1599,80 @@
 			}
  ],
 		"parameters" : 		{
+			"obj-54" : [ "button", "button", 0 ],
+			"obj-70" : [ "button[2]", "button[2]", 0 ],
+			"obj-23" : [ "toggle", "toggle", 0 ],
+			"obj-112" : [ "number", "number", 0 ],
 			"obj-40" : [ "live.gain~", "live.gain~", 0 ],
+			"obj-2" : [ "umenu[1]", "umenu[1]", 0 ],
+			"obj-47" : [ "live.slider", "live.slider", 0 ],
+			"obj-68" : [ "button[1]", "button[1]", 0 ],
+			"obj-28" : [ "umenu[3]", "umenu[3]", 0 ],
 			"parameterbanks" : 			{
+
+			}
+
+		}
+,
+		"parameter_map" : 		{
+			"midi" : 			{
+				"button" : 				{
+					"srcname" : "105.note.0.chan.midi",
+					"min" : 0.0,
+					"max" : 1.0,
+					"flags" : 3
+				}
+,
+				"number" : 				{
+					"srcname" : "84.ctrl.0.chan.midi",
+					"min" : 0.0,
+					"max" : 127.0,
+					"flags" : 2
+				}
+,
+				"umenu[1]" : 				{
+					"srcname" : "77.ctrl.0.chan.midi",
+					"min" : 0.0,
+					"max" : 3.0,
+					"flags" : 2
+				}
+,
+				"umenu[3]" : 				{
+					"srcname" : "78.ctrl.0.chan.midi",
+					"min" : 0.0,
+					"max" : 6.0,
+					"flags" : 2
+				}
+,
+				"toggle" : 				{
+					"srcname" : "43.note.0.chan.midi",
+					"min" : 0.0,
+					"max" : 1.0,
+					"flags" : 3
+				}
+,
+				"live.slider" : 				{
+					"srcname" : "79.ctrl.0.chan.midi",
+					"min" : 0.1,
+					"max" : 50.0,
+					"flags" : 2
+				}
+,
+				"button[1]" : 				{
+					"srcname" : "41.note.0.chan.midi",
+					"min" : 0.0,
+					"max" : 1.0,
+					"flags" : 3,
+					"trigger" : 1
+				}
+,
+				"button[2]" : 				{
+					"srcname" : "42.note.0.chan.midi",
+					"min" : 0.0,
+					"max" : 1.0,
+					"flags" : 3,
+					"trigger" : 1
+				}
 
 			}
 
