@@ -43,31 +43,40 @@ class MusicRecognizer {
       return e;
     });
 
-    this.extractMetaData(JSON.parse(body));
+    this.extractMetaData(body);
 
     return this.recognized_musics;
   }
 
-  extractMetaData(data) {
-    console.log(data);
-    if (data.status.code === 1001) {
-      console.log('No result');
-      return {};
-    }
+  extractMetaData(body) {
+    try {
+      let data = JSON.parse(body);
 
-    if (!data.metadata || !data.metadata.music) {
-      console.error('data format is invalid');
-      return false;
-    }
-
-    const musics = data.metadata.music;
-
-    this.recognized_musics = musics.map(m => {
-      return {
-        title: m.title,
-        artist: m.artists[0] ? m.artists[0].name : ''
+      console.log(data);
+      if (data.status.code === 1001) {
+        console.log('No result');
+        return {};
       }
-    });
+
+      if (!data.metadata || !data.metadata.music) {
+        console.error('data format is invalid');
+        return false;
+      }
+
+      const musics = data.metadata.music;
+
+      this.recognized_musics = musics.map(m => {
+        return {
+          title: m.title,
+          artist: m.artists[0] ? m.artists[0].name : ''
+        }
+      });
+
+    } catch {
+      console.error('body does not have json format');
+      console.log(body);
+      this.recognized_musics = [];
+    }
   }
 
   specifyMusic(i) {
