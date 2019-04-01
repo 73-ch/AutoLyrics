@@ -21,6 +21,10 @@ class AutoLyricsInterface {
     this.downloader.setLyricSite(site_name);
   }
 
+  async searchWithGoogle(title, artist) {
+    return await this.downloader.searchWithGoogle(title, artist);
+  }
+
 
   // 以下のメソッドを順に実行していくことで、目的の歌詞を選択することができる
 

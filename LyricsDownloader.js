@@ -9,7 +9,7 @@ const LYRIC_SITES = {
   'j-lyric': {
     name: 'j-lyric',
     list: { // 一覧を取得するためのタグなど
-      getSearchUrl: (title, artist) => `http://search2.j-lyric.net/index.php?kt=${title}&ct=2&ka=${artist}&ca=2&kl=&cl=2`,
+      getSearchUrl: (title, artist) => `http://search2.j-lyric.net/index.php?kt=${title}&ct=2&ka=${artist}&ca=2&kl=&cl=2`.replace(/\s/, '+'),
       title_link_selector: '.bdy .mid a',
       artist_link_selector: '.bdy .sml a'
     },
@@ -22,7 +22,7 @@ const LYRIC_SITES = {
   'kget': {
     name: 'kget',
     list: {
-      getSearchUrl: (title, artist) => `http://www.kget.jp/search/index.php?c=0&r=${artist}&t=${title}&v=&f=`,
+      getSearchUrl: (title, artist) => `http://www.kget.jp/search/index.php?c=0&r=${artist}&t=${title}&v=&f=`.replace(/\s/, '+'),
       title_link_selector: '#search-result .lyric-anchor',
       artist_link_selector: '#search-result .artist a'
     },
@@ -38,7 +38,7 @@ Object.freeze(LYRIC_SITES);
 
 class LyricsDownloader {
   constructor() {
-    this.nightmare = Nightmare({show: false});
+    this.nightmare = Nightmare({show: true});
     this.site = LYRIC_SITES['kget'];
   }
 
@@ -117,6 +117,32 @@ class LyricsDownloader {
       artist: song.artist,
       lyric: lyric
     };
+  }
+
+  async searchWithGoogle(title, artist){
+    console.log('searching with google...');
+    console.log(encodeURI(`https://www.google.com/search?q=${artist}+${title}`.replace(/\s/, '+')));
+
+    const lyric = await this.nightmare
+      .goto(encodeURI(`https://www.google.com/search?q=${artist}+${title}`.replace(/\s/, '+')))
+      .wait(2000)
+      .evaluate(selector => {
+        return Array.from(document.querySelectorAll(selector)).map(s => s.textContent).join('<br>');
+      }, '.VkR16c span').catch(e => {
+        console.error(`${title} - ${artist} is not found`);
+        return false;
+      });
+
+    if (!lyric) return false;
+
+    console.log(`${title} - ${artist} is found`);
+    console.log(lyric);
+
+    return {
+      title: title,
+      artist: artist,
+      lyric: lyric
+    }
   }
 }
 

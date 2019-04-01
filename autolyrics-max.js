@@ -53,13 +53,19 @@ Max.addHandler("searchLyricInfos", async (title, artist) => {
 
 Max.addHandler("selectDownloadedLyric", async i => {
   const songInfo = await interface.selectDownloadLyrics(i);
-
-  Max.outlet('song_data', 'title', songInfo['title']);
-  Max.outlet('song_data', 'artist', songInfo['artist']);
-  Max.outlet('song_data', 'lyric', songInfo['lyric']);
+  outputSongInfo(songInfo);
 });
 
+Max.addHandler("searchWithGoogle", async (title, artist) => {
+  const songInfo = await interface.searchWithGoogle(title, artist);
+  outputSongInfo(songInfo);
+});
 
+const outputSongInfo = info => {
+  Max.outlet('song_data', 'title', info['title']);
+  Max.outlet('song_data', 'artist', info['artist']);
+  Max.outlet('song_data', 'lyric', info['lyric']);
+};
 
 Max.addHandler("setLyricDownloadSite", site_name => {
   interface.setLyricDownloadSite(site_name);
