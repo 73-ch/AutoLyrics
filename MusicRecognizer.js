@@ -18,6 +18,7 @@ class MusicRecognizer {
   }
 
   async identify(sample) {
+    console.log('recognizing...');
     const timestamp = Date.now();
 
     const stringToSign = ['POST', this.endpoint,API_INFO.access_key,this.data_type,this.signature_version,timestamp].join('\n');
@@ -43,6 +44,8 @@ class MusicRecognizer {
       return e;
     });
 
+    console.log('get recognized data!');
+
     this.extractMetaData(body);
 
     return this.recognized_musics;
@@ -52,7 +55,6 @@ class MusicRecognizer {
     try {
       let data = JSON.parse(body);
 
-      console.log(data);
       if (data.status.code === 1001) {
         console.log('No result');
         return {};

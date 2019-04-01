@@ -1,3 +1,4 @@
+'use strict';
 const Nightmare = require('nightmare');
 const vo = require('vo');
 
@@ -11,11 +12,16 @@ class LyricsDownloader {
   }
 
   async fetchLyricInfos(title, artist) {
+    console.log('fetching lyric infos...');
     this.current_title = title;
     this.current_artist = artist;
 
     const titleTags = await this.getLyricsInfoList(TITLE_LINK_SELECTOR);
     const artistTags = await this.getLyricsInfoList(ARTIST_LINK_SELECTOR);
+
+    if (titleTags.length < 1 || artistTags.length  < 1) {
+      console.error(`no lyric info of ${title} - ${artist}`);
+    }
 
     this.song_infos = titleTags.map((title, i) => {
       return {
@@ -28,6 +34,7 @@ class LyricsDownloader {
 
   // j-lyricsの特定の曲のリンクから歌詞のテキストのみを抜き出す関数
   getLyricsFromPage(link) {
+    console.log('getting a lyric from song page');
     return this.nightmare
       .goto(link)
       .evaluate(selector => {
@@ -38,6 +45,7 @@ class LyricsDownloader {
   // セットされているcurrent_titleとcurrent_artistで検索をかけて
   // 検索結果のリストから必要な情報のみの配列を生成する関数
   getLyricsInfoList(tag) {
+    console.log('getting a lyric info list');
     return this.nightmare
       .goto(`http://search2.j-lyric.net/index.php?kt=${this.current_title}&ct=2&ka=${this.current_artist}&ca=2&kl=&cl=2`)
       .evaluate(selector => {
@@ -55,7 +63,7 @@ class LyricsDownloader {
       return false;
     }
     const song = this.song_infos[i];
-
+    console.log('select song', song);
 
     const lyric = await this.getLyricsFromPage(song.href);
 
