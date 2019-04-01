@@ -954,7 +954,7 @@
 					"numoutlets" : 1,
 					"offset" : [ 0.0, 0.0 ],
 					"outlettype" : [ "bang" ],
-					"patching_rect" : [ 794.0, 805.5, 484.0, 256.0 ],
+					"patching_rect" : [ 794.0, 805.5, 473.0, 276.0 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 1063.333364248275757, 76.416661202907505, 474.0, 269.333334803581238 ],
 					"viewvisibility" : 1
@@ -1002,7 +1002,7 @@
 					"numinlets" : 0,
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
-					"patching_rect" : [ 171.5, 459.5, 98.0, 22.0 ],
+					"patching_rect" : [ 171.5, 433.5, 98.0, 22.0 ],
 					"text" : "r start_recognize"
 				}
 
@@ -1063,7 +1063,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "bang" ],
 					"parameter_enable" : 0,
-					"patching_rect" : [ 171.5, 680.0, 24.0, 24.0 ],
+					"patching_rect" : [ 171.5, 705.0, 24.0, 24.0 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 567.49999988079071, 8.666662335395756, 24.0, 24.0 ]
 				}
@@ -1149,7 +1149,7 @@
 				"box" : 				{
 					"fontsize" : 24.0,
 					"id" : "obj-90",
-					"items" : "TOKYO GIRL - Perfume",
+					"items" : "<empty>",
 					"maxclass" : "umenu",
 					"numinlets" : 1,
 					"numoutlets" : 3,
@@ -1345,7 +1345,7 @@
 				"box" : 				{
 					"fontsize" : 24.0,
 					"id" : "obj-36",
-					"items" : "TOKYO GIRL - Perfume",
+					"items" : "<empty>",
 					"maxclass" : "umenu",
 					"numinlets" : 1,
 					"numoutlets" : 3,
@@ -1672,7 +1672,16 @@
 			}
 , 			{
 				"patchline" : 				{
+					"destination" : [ "obj-16", 0 ],
+					"order" : 0,
+					"source" : [ "obj-43", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
 					"destination" : [ "obj-20", 0 ],
+					"order" : 1,
 					"source" : [ "obj-43", 0 ]
 				}
 
