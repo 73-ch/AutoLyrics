@@ -41,6 +41,13 @@ class AutoLyricsInterface {
     return this.downloader.song_infos;
   }
 
+  // タイトルなどを変更して検索する場合
+  async fetchLyricInfos(title, artist) {
+    await this.downloader.fetchLyricInfos(title, artist);
+
+    return this.downloader.song_infos;
+  }
+
   async selectDownloadLyrics(i) {
     return await this.downloader.specifyLyric(i);
   }

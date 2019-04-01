@@ -40,6 +40,17 @@ Max.addHandler("selectRecognizedMusic", async i => {
   outputDictAndBang(DOWNLOADED_DICT_ID, downloadedList, ["downloaded", "bang"]);
 });
 
+Max.addHandler("searchLyricInfos", async (title, artist) => {
+  const downloadedList = await interface.fetchLyricInfos(title, artist);
+
+  if (!downloadedList) {
+    Max.outlet('any lyrics founded on downloading');
+    return false;
+  }
+
+  outputDictAndBang(DOWNLOADED_DICT_ID, downloadedList, ["downloaded", "bang"]);
+});
+
 Max.addHandler("selectDownloadedLyric", async i => {
   const songInfo = await interface.selectDownloadLyrics(i);
 
@@ -48,19 +59,7 @@ Max.addHandler("selectDownloadedLyric", async i => {
   Max.outlet('song_data', 'lyric', songInfo['lyric']);
 });
 
-Max.addHandler("nextDownloadedLyrics", async () => {
-  const lyrics = await interface.nextDownloadedLyrics();
-  if (lyrics) {
-    Max.outlet('no lyrics found');
-    return false;
-  }
-  console.log(lyrics);
-  Max.outlet(...Object.values(lyrics));
-});
 
-Max.addHandler("finishDownloadedLyrics", async () => {
-  interface.finishDownloadedLyrics();
-});
 
 Max.addHandler("setLyricDownloadSite", site_name => {
   interface.setLyricDownloadSite(site_name);

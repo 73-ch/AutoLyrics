@@ -7,6 +7,7 @@ const ARTIST_LINK_SELECTOR = '.bdy .sml a';
 
 const LYRIC_SITES = {
   'j-lyric': {
+    name: 'j-lyric',
     list: { // 一覧を取得するためのタグなど
       getSearchUrl: (title, artist) => `http://search2.j-lyric.net/index.php?kt=${title}&ct=2&ka=${artist}&ca=2&kl=&cl=2`,
       title_link_selector: '.bdy .mid a',
@@ -19,6 +20,7 @@ const LYRIC_SITES = {
 
   },
   'kget': {
+    name: 'kget',
     list: {
       getSearchUrl: (title, artist) => `http://www.kget.jp/search/index.php?c=0&r=${artist}&t=${title}&v=&f=`,
       title_link_selector: '#search-result .lyric-anchor',
@@ -36,7 +38,7 @@ Object.freeze(LYRIC_SITES);
 
 class LyricsDownloader {
   constructor() {
-    this.nightmare = Nightmare({show: true});
+    this.nightmare = Nightmare({show: false});
     this.site = LYRIC_SITES['kget'];
   }
 
@@ -85,7 +87,7 @@ class LyricsDownloader {
   // セットされているcurrent_titleとcurrent_artistで検索をかけて
   // 検索結果のリストから必要な情報のみの配列を生成する関数
   getLyricsInfoList(tag) {
-    console.log('getting a lyric info list');
+    console.log(`getting a lyric info list from ${this.site.name}`);
     return this.nightmare
       .goto(this.site.list.getSearchUrl(this.current_title, this.current_artist))
       .evaluate(selector => {
