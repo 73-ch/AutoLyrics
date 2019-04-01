@@ -8,20 +8,6 @@ const interface = new AutoLyricsInterface();
 const RECOGNIZED_DICT_ID = "recognized";
 const DOWNLOADED_DICT_ID = "downloaded";
 
-
-// (async () => {
-//   await interface.startRecognize('./audio/GAME.m4a');
-//
-//   await interface.selectRecognizedMusic(0);
-//
-//   const lyrics = await interface.nextDownloadedLyrics();
-//
-//   console.log(lyrics);
-//   Max.post(lyrics);
-//
-//   interface.finishDownloadedLyrics();
-// })();
-
 const outputDictAndBang = (dictId, content, outputObj) => {
   Max.setDict(dictId, {...content}).then(() => {
     Max.outlet(...outputObj);
@@ -74,4 +60,8 @@ Max.addHandler("nextDownloadedLyrics", async () => {
 
 Max.addHandler("finishDownloadedLyrics", async () => {
   interface.finishDownloadedLyrics();
+});
+
+Max.addHandler("setLyricDownloadSite", site_name => {
+  interface.setLyricDownloadSite(site_name);
 });

@@ -17,6 +17,11 @@ class AutoLyricsInterface {
     this.playingBuffer = null;
   }
 
+  setLyricDownloadSite(site_name) {
+    this.downloader.setLyricSite(site_name);
+  }
+
+
   // 以下のメソッドを順に実行していくことで、目的の歌詞を選択することができる
 
   async startRecognize(url) {

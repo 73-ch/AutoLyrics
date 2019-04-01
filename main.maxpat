@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 176.0, 784.0, 1542.0, 366.0 ],
+		"rect" : [ 34.0, 79.0, 1414.0, 1087.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -38,6 +38,43 @@
 		"style" : "",
 		"subpatcher_template" : "",
 		"boxes" : [ 			{
+				"box" : 				{
+					"id" : "obj-19",
+					"items" : [ "j-lyric", ",", "kget" ],
+					"maxclass" : "umenu",
+					"numinlets" : 1,
+					"numoutlets" : 3,
+					"outlettype" : [ "int", "", "" ],
+					"parameter_enable" : 0,
+					"patching_rect" : [ 1024.0, 541.0, 100.0, 22.0 ]
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-15",
+					"maxclass" : "message",
+					"numinlets" : 2,
+					"numoutlets" : 1,
+					"outlettype" : [ "" ],
+					"patching_rect" : [ 1024.0, 569.0, 140.0, 22.0 ],
+					"text" : "setLyricDownloadSite $1"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-4",
+					"maxclass" : "button",
+					"numinlets" : 1,
+					"numoutlets" : 1,
+					"outlettype" : [ "bang" ],
+					"parameter_enable" : 0,
+					"patching_rect" : [ 171.5, 459.5, 24.0, 24.0 ]
+				}
+
+			}
+, 			{
 				"box" : 				{
 					"id" : "obj-14",
 					"linecount" : 5,
@@ -93,7 +130,6 @@
 						"tags" : "",
 						"style" : "",
 						"subpatcher_template" : "",
-						"visible" : 1,
 						"boxes" : [ 							{
 								"box" : 								{
 									"id" : "obj-26",
@@ -136,7 +172,7 @@
 									"presentation" : 1,
 									"presentation_rect" : [ 20.0, 125.0, 429.0, 575.0 ],
 									"rowhead" : 1,
-									"rows" : 34,
+									"rows" : 35,
 									"selmode" : 3
 								}
 
@@ -270,11 +306,11 @@
 									"presentation_rect" : [ 52.333364248275757, 44.166662335395756, 24.0, 24.0 ],
 									"saved_attribute_attributes" : 									{
 										"valueof" : 										{
-											"parameter_longname" : "button[2]",
-											"parameter_mmax" : 1,
 											"parameter_shortname" : "button[2]",
 											"parameter_enum" : [ "off", "on" ],
-											"parameter_type" : 2
+											"parameter_type" : 2,
+											"parameter_longname" : "button[2]",
+											"parameter_mmax" : 1
 										}
 
 									}
@@ -296,11 +332,11 @@
 									"presentation_rect" : [ 19.833333214124195, 44.166662335395756, 24.0, 24.0 ],
 									"saved_attribute_attributes" : 									{
 										"valueof" : 										{
-											"parameter_longname" : "button[1]",
-											"parameter_mmax" : 1,
 											"parameter_shortname" : "button[1]",
 											"parameter_enum" : [ "off", "on" ],
-											"parameter_type" : 2
+											"parameter_type" : 2,
+											"parameter_longname" : "button[1]",
+											"parameter_mmax" : 1
 										}
 
 									}
@@ -335,12 +371,12 @@
 									"presentation_rect" : [ 181.0, 800.666662335395813, 86.0, 41.0 ],
 									"saved_attribute_attributes" : 									{
 										"valueof" : 										{
-											"parameter_mmin" : 0.1,
-											"parameter_longname" : "live.slider",
-											"parameter_mmax" : 50.0,
 											"parameter_shortname" : "live.slider",
 											"parameter_type" : 0,
-											"parameter_unitstyle" : 1
+											"parameter_unitstyle" : 1,
+											"parameter_mmin" : 0.1,
+											"parameter_longname" : "live.slider",
+											"parameter_mmax" : 50.0
 										}
 
 									}
@@ -386,11 +422,11 @@
 									"presentation_rect" : [ 19.833333214124195, 809.166662335395813, 24.0, 24.0 ],
 									"saved_attribute_attributes" : 									{
 										"valueof" : 										{
-											"parameter_longname" : "toggle",
-											"parameter_mmax" : 1,
 											"parameter_shortname" : "toggle",
 											"parameter_enum" : [ "off", "on" ],
-											"parameter_type" : 2
+											"parameter_type" : 2,
+											"parameter_longname" : "toggle",
+											"parameter_mmax" : 1
 										}
 
 									}
@@ -449,13 +485,13 @@
 									"presentation_rect" : [ 255.833333214124195, 761.666662335395813, 150.0, 22.0 ],
 									"saved_attribute_attributes" : 									{
 										"valueof" : 										{
+											"parameter_shortname" : "umenu[3]",
+											"parameter_enum" : [ "TRIANGLES", "TRIANGLE_STRIP", "TRIANGLE_FAN", "LINES", "LINE_STRIP", "LINE_LOOP", "POINTS" ],
+											"parameter_type" : 2,
 											"parameter_longname" : "umenu[3]",
 											"parameter_initial_enable" : 1,
 											"parameter_mmax" : 6,
-											"parameter_initial" : [ 6 ],
-											"parameter_shortname" : "umenu[3]",
-											"parameter_enum" : [ "TRIANGLES", "TRIANGLE_STRIP", "TRIANGLE_FAN", "LINES", "LINE_STRIP", "LINE_LOOP", "POINTS" ],
-											"parameter_type" : 2
+											"parameter_initial" : [ 6 ]
 										}
 
 									}
@@ -478,11 +514,11 @@
 									"presentation_rect" : [ 19.833333214124195, 761.666662335395813, 223.0, 22.0 ],
 									"saved_attribute_attributes" : 									{
 										"valueof" : 										{
-											"parameter_longname" : "umenu[1]",
-											"parameter_mmax" : 3,
 											"parameter_shortname" : "umenu[1]",
 											"parameter_enum" : [ "KAKKURI_NO_INDEX", "KAKKURI_INDEX_LINE", "KAKKURI_INDEX_TRIANGLE", "KAKKURI_INDEX_CUSTOM" ],
-											"parameter_type" : 2
+											"parameter_type" : 2,
+											"parameter_longname" : "umenu[1]",
+											"parameter_mmax" : 3
 										}
 
 									}
@@ -550,7 +586,7 @@
 									"patching_rect" : [ 174.666666666666515, 95.333333333333314, 154.0, 22.0 ],
 									"presentation" : 1,
 									"presentation_rect" : [ 234.333333214124195, 46.166662335395756, 215.0, 22.0 ],
-									"text" : "\"TOKYO GIRL\""
+									"text" : "\"Cosmic Explorer\""
 								}
 
 							}
@@ -634,10 +670,10 @@
 									"numinlets" : 2,
 									"numoutlets" : 1,
 									"outlettype" : [ "" ],
-									"patching_rect" : [ 50.0, 728.5, 627.0, 35.0 ],
+									"patching_rect" : [ 50.0, 728.5, 627.0, 62.0 ],
 									"presentation" : 1,
-									"presentation_rect" : [ 19.833333214124195, 715.166663726170782, 433.0, 35.0 ],
-									"text" : "\"Let us be going！ going！ BOY\""
+									"presentation_rect" : [ 19.833333214124195, 715.166663726170782, 433.0, 62.0 ],
+									"text" : "\n"
 								}
 
 							}
@@ -657,9 +693,9 @@
 									"presentation_rect" : [ 87.333364248275757, 70.166662335395756, 89.0, 42.0 ],
 									"saved_attribute_attributes" : 									{
 										"valueof" : 										{
-											"parameter_longname" : "number",
 											"parameter_shortname" : "number",
-											"parameter_type" : 0
+											"parameter_type" : 0,
+											"parameter_longname" : "number"
 										}
 
 									}
@@ -954,7 +990,7 @@
 					"numoutlets" : 1,
 					"offset" : [ 0.0, 0.0 ],
 					"outlettype" : [ "bang" ],
-					"patching_rect" : [ 794.0, 805.5, 473.0, 276.0 ],
+					"patching_rect" : [ 794.0, 805.5, 474.0, 262.0 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 1063.333364248275757, 76.416661202907505, 474.0, 269.333334803581238 ],
 					"viewvisibility" : 1
@@ -1149,7 +1185,7 @@
 				"box" : 				{
 					"fontsize" : 24.0,
 					"id" : "obj-90",
-					"items" : "<empty>",
+					"items" : "Cosmic Explorer - Perfume",
 					"maxclass" : "umenu",
 					"numinlets" : 1,
 					"numoutlets" : 3,
@@ -1276,11 +1312,11 @@
 					"presentation_rect" : [ 142.49999988079071, -18.833337664604244, 79.0, 79.0 ],
 					"saved_attribute_attributes" : 					{
 						"valueof" : 						{
-							"parameter_longname" : "button",
-							"parameter_mmax" : 1,
 							"parameter_shortname" : "button",
 							"parameter_enum" : [ "off", "on" ],
-							"parameter_type" : 2
+							"parameter_type" : 2,
+							"parameter_longname" : "button",
+							"parameter_mmax" : 1
 						}
 
 					}
@@ -1315,12 +1351,12 @@
 					"presentation_rect" : [ 28.99999988079071, 18.833329399426759, 48.0, 136.0 ],
 					"saved_attribute_attributes" : 					{
 						"valueof" : 						{
-							"parameter_mmin" : -70.0,
-							"parameter_longname" : "live.gain~",
-							"parameter_mmax" : 6.0,
 							"parameter_shortname" : "live.gain~",
 							"parameter_type" : 0,
-							"parameter_unitstyle" : 4
+							"parameter_unitstyle" : 4,
+							"parameter_mmin" : -70.0,
+							"parameter_longname" : "live.gain~",
+							"parameter_mmax" : 6.0
 						}
 
 					}
@@ -1345,7 +1381,7 @@
 				"box" : 				{
 					"fontsize" : 24.0,
 					"id" : "obj-36",
-					"items" : "<empty>",
+					"items" : "Cosmic Explorer - Perfume",
 					"maxclass" : "umenu",
 					"numinlets" : 1,
 					"numoutlets" : 3,
@@ -1510,8 +1546,6 @@
 					"saved_object_attributes" : 					{
 						"autostart" : 1,
 						"defer" : 0,
-						"node_bin_path" : "",
-						"npm_bin_path" : "",
 						"watch" : 1
 					}
 ,
@@ -1570,6 +1604,13 @@
 			}
 , 			{
 				"patchline" : 				{
+					"destination" : [ "obj-1", 0 ],
+					"source" : [ "obj-15", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
 					"destination" : [ "obj-5", 1 ],
 					"order" : 1,
 					"source" : [ "obj-16", 0 ]
@@ -1581,6 +1622,13 @@
 					"destination" : [ "obj-6", 1 ],
 					"order" : 0,
 					"source" : [ "obj-16", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-15", 0 ],
+					"source" : [ "obj-19", 1 ]
 				}
 
 			}
@@ -1642,6 +1690,22 @@
 			}
 , 			{
 				"patchline" : 				{
+					"destination" : [ "obj-16", 0 ],
+					"order" : 0,
+					"source" : [ "obj-4", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-20", 0 ],
+					"order" : 1,
+					"source" : [ "obj-4", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
 					"destination" : [ "obj-33", 1 ],
 					"source" : [ "obj-40", 1 ]
 				}
@@ -1672,16 +1736,7 @@
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-16", 0 ],
-					"order" : 0,
-					"source" : [ "obj-43", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-20", 0 ],
-					"order" : 1,
+					"destination" : [ "obj-4", 0 ],
 					"source" : [ "obj-43", 0 ]
 				}
 
@@ -1858,15 +1913,15 @@
 			}
  ],
 		"parameters" : 		{
-			"obj-85::obj-70" : [ "button[2]", "button[2]", 0 ],
-			"obj-85::obj-28" : [ "umenu[3]", "umenu[3]", 0 ],
-			"obj-54" : [ "button", "button", 0 ],
-			"obj-85::obj-23" : [ "toggle", "toggle", 0 ],
 			"obj-85::obj-68" : [ "button[1]", "button[1]", 0 ],
-			"obj-85::obj-112" : [ "number", "number", 0 ],
+			"obj-85::obj-2" : [ "umenu[1]", "umenu[1]", 0 ],
+			"obj-85::obj-70" : [ "button[2]", "button[2]", 0 ],
+			"obj-54" : [ "button", "button", 0 ],
 			"obj-40" : [ "live.gain~", "live.gain~", 0 ],
 			"obj-85::obj-47" : [ "live.slider", "live.slider", 0 ],
-			"obj-85::obj-2" : [ "umenu[1]", "umenu[1]", 0 ],
+			"obj-85::obj-28" : [ "umenu[3]", "umenu[3]", 0 ],
+			"obj-85::obj-23" : [ "toggle", "toggle", 0 ],
+			"obj-85::obj-112" : [ "number", "number", 0 ],
 			"parameterbanks" : 			{
 
 			}
