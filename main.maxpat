@@ -66,7 +66,7 @@
 						}
 ,
 						"classnamespace" : "box",
-						"rect" : [ 994.0, 124.0, 475.0, 866.0 ],
+						"rect" : [ 1278.0, 226.0, 474.0, 853.0 ],
 						"bglocked" : 0,
 						"openinpresentation" : 0,
 						"default_fontsize" : 12.0,
@@ -95,6 +95,53 @@
 						"subpatcher_template" : "",
 						"visible" : 1,
 						"boxes" : [ 							{
+								"box" : 								{
+									"id" : "obj-26",
+									"maxclass" : "newobj",
+									"numinlets" : 2,
+									"numoutlets" : 1,
+									"outlettype" : [ "" ],
+									"patching_rect" : [ 50.0, 175.0, 161.0, 22.0 ],
+									"text" : "lyric_cellblock_setter.maxpat"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"id" : "obj-20",
+									"maxclass" : "message",
+									"numinlets" : 2,
+									"numoutlets" : 1,
+									"outlettype" : [ "" ],
+									"patching_rect" : [ 50.0, 624.0, 29.5, 22.0 ],
+									"text" : "$4"
+								}
+
+							}
+, 							{
+								"box" : 								{
+									"coldef" : [ [ 1, 380, 1, 0.0, 0.0, 0.0, 1.0, 1, 0.0, 0.0, 0.0, 1.0, -1, -1, -1 ], [ 0, 30, 1, 0.0, 0.0, 0.0, 1.0, 1, 0.0, 0.0, 0.0, 1.0, -1, -1, -1 ] ],
+									"cols" : 2,
+									"colwidth" : 76,
+									"fontface" : 0,
+									"fontname" : "Arial",
+									"fontsize" : 12.0,
+									"id" : "obj-21",
+									"maxclass" : "jit.cellblock",
+									"numinlets" : 2,
+									"numoutlets" : 4,
+									"outlettype" : [ "list", "", "", "" ],
+									"outmode" : 1,
+									"patching_rect" : [ 50.0, 213.0, 643.0, 401.0 ],
+									"presentation" : 1,
+									"presentation_rect" : [ 20.0, 125.0, 429.0, 575.0 ],
+									"rowhead" : 1,
+									"rows" : 34,
+									"selmode" : 3
+								}
+
+							}
+, 							{
 								"box" : 								{
 									"id" : "obj-17",
 									"maxclass" : "comment",
@@ -127,7 +174,7 @@
 									"maxclass" : "comment",
 									"numinlets" : 1,
 									"numoutlets" : 0,
-									"patching_rect" : [ 660.0, 404.0, 150.0, 20.0 ],
+									"patching_rect" : [ 201.0, 660.0, 150.0, 20.0 ],
 									"presentation" : 1,
 									"presentation_rect" : [ 32.333364248275757, 81.166662335395756, 44.0, 20.0 ],
 									"text" : "index"
@@ -183,28 +230,6 @@
 									"outlettype" : [ "", "" ],
 									"patching_rect" : [ 533.166666666666515, 95.5, 39.0, 22.0 ],
 									"text" : "zl.join"
-								}
-
-							}
-, 							{
-								"box" : 								{
-									"bgmode" : 0,
-									"border" : 0,
-									"clickthrough" : 0,
-									"enablehscroll" : 0,
-									"enablevscroll" : 0,
-									"id" : "obj-26",
-									"lockeddragscroll" : 0,
-									"maxclass" : "bpatcher",
-									"name" : "lyric_viewer.maxpat",
-									"numinlets" : 2,
-									"numoutlets" : 1,
-									"offset" : [ 0.0, 0.0 ],
-									"outlettype" : [ "" ],
-									"patching_rect" : [ 50.0, 183.333333333333314, 434.0, 429.999999999999943 ],
-									"presentation" : 1,
-									"presentation_rect" : [ 19.833333214124195, 124.333333333333314, 431.0, 578.0 ],
-									"viewvisibility" : 1
 								}
 
 							}
@@ -611,7 +636,8 @@
 									"outlettype" : [ "" ],
 									"patching_rect" : [ 50.0, 728.5, 627.0, 35.0 ],
 									"presentation" : 1,
-									"presentation_rect" : [ 19.833333214124195, 715.166663726170782, 433.0, 35.0 ]
+									"presentation_rect" : [ 19.833333214124195, 715.166663726170782, 433.0, 35.0 ],
+									"text" : "\"Let us be going！ going！ BOY\""
 								}
 
 							}
@@ -687,6 +713,20 @@
 							}
 , 							{
 								"patchline" : 								{
+									"destination" : [ "obj-4", 0 ],
+									"source" : [ "obj-20", 0 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
+									"destination" : [ "obj-20", 0 ],
+									"source" : [ "obj-21", 0 ]
+								}
+
+							}
+, 							{
+								"patchline" : 								{
 									"destination" : [ "obj-19", 0 ],
 									"source" : [ "obj-23", 0 ]
 								}
@@ -701,7 +741,7 @@
 							}
 , 							{
 								"patchline" : 								{
-									"destination" : [ "obj-4", 0 ],
+									"destination" : [ "obj-21", 0 ],
 									"source" : [ "obj-26", 0 ]
 								}
 
@@ -914,7 +954,7 @@
 					"numoutlets" : 1,
 					"offset" : [ 0.0, 0.0 ],
 					"outlettype" : [ "bang" ],
-					"patching_rect" : [ 798.0, 832.0, 480.0, 229.0 ],
+					"patching_rect" : [ 794.0, 805.5, 484.0, 256.0 ],
 					"presentation" : 1,
 					"presentation_rect" : [ 1063.333364248275757, 76.416661202907505, 474.0, 269.333334803581238 ],
 					"viewvisibility" : 1
@@ -1921,7 +1961,7 @@
 				"implicit" : 1
 			}
 , 			{
-				"name" : "lyric_viewer.maxpat",
+				"name" : "lyric_cellblock_setter.maxpat",
 				"bootpath" : "~/WebstormProjects/AutoLyrics",
 				"patcherrelativepath" : ".",
 				"type" : "JSON",
