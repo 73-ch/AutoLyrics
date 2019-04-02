@@ -50,9 +50,13 @@ class LyricsDownloader {
     const titleTags = await this.getLyricsInfoList(this.site.list.title_link_selector);
     const artistTags = await this.getLyricsInfoList(this.site.list.artist_link_selector);
 
-    if (titleTags.length < 1 || artistTags.length < 1) {
+    if (titleTags.length > 0 && artistTags.length > 0) {
+      console.log('fetching lyric infos is succeed');
+    } else {
       console.error(`no lyric info of ${title} - ${artist}`);
     }
+
+
 
     this.song_infos = titleTags.map((title, i) => {
       return {
@@ -95,7 +99,10 @@ class LyricsDownloader {
           textContent: a.textContent,
           href: a.href
         }));
-      }, tag);
+      }, tag).catch(e => {
+        console.error('failed');
+        return false;
+      });
   }
 
   async specifyLyric(i) {
