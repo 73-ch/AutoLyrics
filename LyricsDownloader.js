@@ -40,6 +40,7 @@ class LyricsDownloader {
   constructor() {
     this.nightmare = Nightmare({show: true});
     this.site = LYRIC_SITES['kget'];
+    this.translate = false;
   }
 
   async fetchLyricInfos(title, artist) {
@@ -126,6 +127,22 @@ class LyricsDownloader {
     };
   }
 
+  async getTranslatedLyric(lyric) {
+    return this.nightmare
+      .goto(`https://translate.google.co.jp/?hl=ja#view=home&op=translate&sl=auto&tl=ja&text=${encodeURI(lyric)}`)
+      .evaluate(selector => {
+        return document.querySelector(selector) ? document.querySelector(selector).textContent : false;
+      }, '.translation').catch(e => {
+        console.error(`translation failed`);
+        return '';
+      });
+  }
+
+  setTranslate(frag) {
+    this.translate = !!frag;
+    console.log(`translate : ${this.translate}`);
+  }
+
   async searchWithGoogle(title, artist){
     console.log('searching with google...');
     console.log(encodeURI(`https://www.google.com/search?q=${artist}+${title}`.replace(/\s/, '+')));
@@ -143,12 +160,21 @@ class LyricsDownloader {
     if (!lyric) return false;
 
     console.log(`${title} - ${artist} is found`);
-    console.log(lyric);
+
+    let translated_lyric = '';
+
+    if (this.translate) {
+      console.log('fetching translated lyric...');
+      translated_lyric = await this.getTranslatedLyric(lyric);
+    }
+
+    console.log('fetching lyric completed!');
 
     return {
       title: title,
       artist: artist,
-      lyric: lyric
+      lyric: lyric,
+      translated_lyric: translated_lyric
     }
   }
 }

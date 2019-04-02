@@ -3,7 +3,7 @@ const Max = require("max-api");
 
 const AutoLyricsInterface = require('./AutoLyricsInterface');
 
-const interface = new AutoLyricsInterface();
+const lyric_interface = new AutoLyricsInterface();
 
 const RECOGNIZED_DICT_ID = "recognized";
 const DOWNLOADED_DICT_ID = "downloaded";
@@ -17,7 +17,7 @@ const outputDictAndBang = (dictId, content, outputObj) => {
 };
 
 Max.addHandler("startRecognize", async url => {
-  const recognizedList = await interface.startRecognize(url);
+  const recognizedList = await lyric_interface.startRecognize(url);
 
   if (!recognizedList) {
     Max.outlet('any lyrics founded on recognizing');
@@ -30,7 +30,7 @@ Max.addHandler("startRecognize", async url => {
 });
 
 Max.addHandler("selectRecognizedMusic", async i => {
-  const downloadedList = await interface.selectRecognizedMusic(i);
+  const downloadedList = await lyric_interface.selectRecognizedMusic(i);
 
   if (!downloadedList) {
     Max.outlet('any lyrics founded on downloading');
@@ -41,7 +41,7 @@ Max.addHandler("selectRecognizedMusic", async i => {
 });
 
 Max.addHandler("searchLyricInfos", async (title, artist) => {
-  const downloadedList = await interface.fetchLyricInfos(title, artist);
+  const downloadedList = await lyric_interface.fetchLyricInfos(title, artist);
 
   if (!downloadedList) {
     Max.outlet('any lyrics founded on downloading');
@@ -52,21 +52,26 @@ Max.addHandler("searchLyricInfos", async (title, artist) => {
 });
 
 Max.addHandler("selectDownloadedLyric", async i => {
-  const songInfo = await interface.selectDownloadLyrics(i);
+  const songInfo = await lyric_interface.selectDownloadLyrics(i);
   outputSongInfo(songInfo);
 });
 
 Max.addHandler("searchWithGoogle", async (title, artist) => {
-  const songInfo = await interface.searchWithGoogle(title, artist);
+  const songInfo = await lyric_interface.searchWithGoogle(title, artist);
   outputSongInfo(songInfo);
+});
+
+Max.addHandler("setTranslate", flag => {
+  lyric_interface.setTranslate(flag);
 });
 
 const outputSongInfo = info => {
   Max.outlet('song_data', 'title', info['title']);
   Max.outlet('song_data', 'artist', info['artist']);
   Max.outlet('song_data', 'lyric', info['lyric']);
+  Max.outlet('song_data', 'translated_lyric', info['translated_lyric']);
 };
 
 Max.addHandler("setLyricDownloadSite", site_name => {
-  interface.setLyricDownloadSite(site_name);
+  lyric_interface.setLyricDownloadSite(site_name);
 });

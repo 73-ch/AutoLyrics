@@ -21,6 +21,10 @@ class AutoLyricsInterface {
     this.downloader.setLyricSite(site_name);
   }
 
+  setTranslate(flag) {
+    this.downloader.setTranslate(flag);
+  }
+
   async searchWithGoogle(title, artist) {
     return await this.downloader.searchWithGoogle(title, artist);
   }
