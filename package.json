@@ -1,5 +1,5 @@
 {
-  "name": "AutoLyrics",
+  "name": "autolyrics",
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
@@ -12,5 +12,8 @@
   },
   "scripts": {
     "start": "node index.js"
-  }
+  },
+  "keywords": [],
+  "author": "",
+  "description": ""
 }
